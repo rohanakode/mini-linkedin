@@ -10,7 +10,9 @@ function Home() {
   const { user } = useContext(AuthContext);
 
   const fetchPosts = async () => {
-    const res = await axios.get(`${API_BASE_URL}/api/posts`);
+    const res = await axios.get(
+      `${import.meta.env.VITE_API_BASE_URL}/api/posts`
+    );
     setPosts(res.data);
   };
 

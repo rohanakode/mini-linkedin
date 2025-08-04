@@ -12,7 +12,7 @@ function PostForm({ onPostCreated }) {
     if (!content.trim()) return;
 
     await axios.post(
-      "https://mini-linkedin-backend-p77t.onrender.com",
+      `${import.meta.env.VITE_API_BASE_URL}/api/posts`,
       { content },
       {
         headers: { Authorization: `Bearer ${token}` },

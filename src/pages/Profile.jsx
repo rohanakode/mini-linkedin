@@ -11,7 +11,9 @@ function Profile() {
   const [profile, setProfile] = useState(null);
 
   const fetchProfile = async () => {
-    const res = await axios.get(`${API_BASE_URL}/api/profile/${id}`);
+    const res = await axios.get(
+      `${import.meta.env.VITE_API_BASE_URL}/api/profile/${id}`
+    );
     setProfile(res.data);
   };
 
@@ -21,9 +23,12 @@ function Profile() {
 
   const handleDelete = async (postId) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
-      await axios.delete(`${API_BASE_URL}/api/posts/${postId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `${import.meta.env.VITE_API_BASE_URL}/api/posts/${postId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       fetchProfile();
     }
   };

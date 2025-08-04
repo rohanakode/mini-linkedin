@@ -14,12 +14,15 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post(`${API_BASE_URL}/api/auth/register`, {
-      name,
-      email,
-      password,
-      bio,
-    });
+    const res = await axios.post(
+      `${import.meta.env.VITE_API_BASE_URL}/api/auth/register`,
+      {
+        name,
+        email,
+        password,
+        bio,
+      }
+    );
     login(res.data, res.data.token);
     navigate("/");
   };
