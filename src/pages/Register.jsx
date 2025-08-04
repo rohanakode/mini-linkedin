@@ -14,15 +14,12 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post(
-      "backendhttps://mini-linkedin-backend-p77t.onrender.com",
-      {
-        name,
-        email,
-        password,
-        bio,
-      }
-    );
+    const res = await axios.post(`${API_BASE_URL}/api/auth/register`, {
+      name,
+      email,
+      password,
+      bio,
+    });
     login(res.data, res.data.token);
     navigate("/");
   };

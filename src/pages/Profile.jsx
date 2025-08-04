@@ -11,9 +11,7 @@ function Profile() {
   const [profile, setProfile] = useState(null);
 
   const fetchProfile = async () => {
-    const res = await axios.get(
-      `backendhttps://mini-linkedin-backend-p77t.onrender.com/${id}`
-    );
+    const res = await axios.get(`${API_BASE_URL}/api/profile/${id}`);
     setProfile(res.data);
   };
 
@@ -23,12 +21,9 @@ function Profile() {
 
   const handleDelete = async (postId) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
-      await axios.delete(
-        `backendhttps://mini-linkedin-backend-p77t.onrender.com/${postId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      await axios.delete(`${API_BASE_URL}/api/posts/${postId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       fetchProfile();
     }
   };

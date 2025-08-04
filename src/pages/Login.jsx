@@ -12,13 +12,10 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post(
-      "https://mini-linkedin-backend-p77t.onrender.com",
-      {
-        email,
-        password,
-      }
-    );
+    const res = await axios.post(`${API_BASE_URL}/api/auth/login`, {
+      email,
+      password,
+    });
     login(res.data, res.data.token);
     navigate("/");
   };

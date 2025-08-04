@@ -10,9 +10,7 @@ function Home() {
   const { user } = useContext(AuthContext);
 
   const fetchPosts = async () => {
-    const res = await axios.get(
-      "https://mini-linkedin-backend-p77t.onrender.com"
-    );
+    const res = await axios.get(`${API_BASE_URL}/api/posts`);
     setPosts(res.data);
   };
 
